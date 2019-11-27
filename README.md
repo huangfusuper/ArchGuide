@@ -2,8 +2,9 @@
 
 推荐使用 https://archguide.gitee.io 在线阅读。
 
-[VIP必看](docs/VIP必看.md)
+
 ## 目录
+- [VIP必看](docs/VIP必看.md)
 - [Java](#Java)
     - [并发](#并发)
     - [JVM](#JVM)
