@@ -13,7 +13,8 @@
 对于一个集群，想要提高这个集群的可用性，通常会采用多机房部署，比如现在有一个由6台zkServer所组成的一个集群，部署在了两个机房：
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/365147/1563867147007-e5000b66-fbe7-4958-89c7-11800de04f7c.png#align=left&display=inline&height=374&name=image.png&originHeight=748&originWidth=1460&size=43521&status=done&width=730)
 
-正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，如果**不考虑过半机制**，那么就会出现每个机房内部都将选出一个Leader。<br />**![image.png](https://cdn.nlark.com/yuque/0/2019/png/365147/1563867309583-b3c9d494-d91e-41f0-bb1f-310354cc14c4.png#align=left&display=inline&height=384&name=image.png&originHeight=768&originWidth=1460&size=42332&status=done&width=730)**
+正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，如果**不考虑过半机制**，那么就会出现每个机房内部都将选出一个Leader。
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/365147/1563867309583-b3c9d494-d91e-41f0-bb1f-310354cc14c4.png#align=left&display=inline&height=384&name=image.png&originHeight=768&originWidth=1460&size=42332&status=done&width=730)
 
 这就相当于原本一个集群，被分成了两个集群，出现了两个“大脑”，这就是脑裂。
 
