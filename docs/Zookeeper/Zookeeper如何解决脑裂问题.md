@@ -55,7 +55,8 @@ this.half = n/2;
 return (set.size() > half);
 ```
 
-举个简单的例子：<br />如果现在集群中有5台zkServer，那么half=5/2=2，那么也就是说，领导者选举的过程中至少要有三台zkServer投了同一个zkServer，才会符合过半机制，才能选出来一个Leader。
+举个简单的例子：
+如果现在集群中有5台zkServer，那么half=5/2=2，那么也就是说，领导者选举的过程中至少要有三台zkServer投了同一个zkServer，才会符合过半机制，才能选出来一个Leader。
 
 那么有一个问题我们想一下，**选举的过程中为什么一定要有一个过半机制验证？**
 

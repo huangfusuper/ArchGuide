@@ -52,7 +52,9 @@ set @@auto_increment_offset = 2;     -- 起始值
 set @@auto_increment_increment = 2;  -- 步长
 ```
 
-经过上面的配置后，这两个Mysql实例生成的id序列如下：<br />mysql1,起始值为1,步长为2,ID生成的序列为：1,3,5,7,9,...<br />mysql2,起始值为2,步长为2,ID生成的序列为：2,4,6,8,10,...
+经过上面的配置后，这两个Mysql实例生成的id序列如下：
+mysql1,起始值为1,步长为2,ID生成的序列为：1,3,5,7,9,...
+mysql2,起始值为2,步长为2,ID生成的序列为：2,4,6,8,10,...
 
 对于这种生成分布式ID的方案，需要单独新增一个生成分布式ID应用，比如DistributIdService，该应用提供一个接口供业务应用获取ID，业务应用需要一个ID时，通过rpc的方式请求DistributIdService，DistributIdService随机去上面的两个Mysql实例中去获取ID。
 
@@ -60,7 +62,10 @@ set @@auto_increment_increment = 2;  -- 步长
 
 但是这种方案的扩展性不太好，如果两台Mysql实例不够用，需要新增Mysql实例来提高性能时，这时就会比较麻烦。
 
-现在如果要新增一个实例mysql3，要怎么操作呢？<br />第一，mysql1、mysql2的步长肯定都要修改为3，而且只能是人工去修改，这是需要时间的。<br />第二，因为mysql1和mysql2是不停在自增的，对于mysql3的起始值我们可能要定得大一点，以给充分的时间去修改mysql1，mysql2的步长。<br />第三，在修改步长的时候很可能会出现重复ID，要解决这个问题，可能需要停机才行。
+现在如果要新增一个实例mysql3，要怎么操作呢？
+第一，mysql1、mysql2的步长肯定都要修改为3，而且只能是人工去修改，这是需要时间的。
+第二，因为mysql1和mysql2是不停在自增的，对于mysql3的起始值我们可能要定得大一点，以给充分的时间去修改mysql1，mysql2的步长。
+第三，在修改步长的时候很可能会出现重复ID，要解决这个问题，可能需要停机才行。
 
 为了解决上面的问题，以及能够进一步提高DistributIdService的性能，如果使用第三种生成分布式ID机制。
 
@@ -92,7 +97,9 @@ update id_generator set current_max_id=#{newMaxId}, version=version+1 where vers
 
 因为newMaxId是DistributIdService中根据oldMaxId+步长算出来的，只要上面的update更新成功了就表示号段获取成功了。
 
-为了提供数据库层的高可用，需要对数据库使用多主模式进行部署，对于每个数据库来说要保证生成的号段不重复，这就需要利用最开始的思路，再在刚刚的数据库表中增加起始值和步长，比如如果现在是两台Mysql，那么<br />mysql1将生成号段（1,1001]，自增的时候序列为1，3，4，5，7....<br />mysql1将生成号段（2,1002]，自增的时候序列为2，4，6，8，10...
+为了提供数据库层的高可用，需要对数据库使用多主模式进行部署，对于每个数据库来说要保证生成的号段不重复，这就需要利用最开始的思路，再在刚刚的数据库表中增加起始值和步长，比如如果现在是两台Mysql，那么
+mysql1将生成号段（1,1001]，自增的时候序列为1，3，4，5，7....
+mysql1将生成号段（2,1002]，自增的时候序列为2，4，6，8，10...
 
 更详细的可以参考滴滴开源的TinyId：[https://github.com/didi/tinyid/wiki/tinyid%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D](https://github.com/didi/tinyid/wiki/tinyid%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D)
 
@@ -150,7 +157,7 @@ Leaf中的snowflake模式和原始snowflake算法的不同点，也主要在work
 ### 总结
 总得来说，上面两种都是自动生成workId，以让系统更加稳定以及减少人工成功。
 
-**
+
 <a name="2mU5T"></a>
 ## Redis
 这里额外再介绍一下使用Redis来生成分布式ID，其实和利用Mysql自增ID类似，可以利用Redis中的incr命令来实现原子性的自增与返回，比如：

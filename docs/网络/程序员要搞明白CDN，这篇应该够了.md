@@ -21,7 +21,6 @@ CDN全称叫做“Content Delivery Network”，中文叫**内容分发网络**�
 
 我们先来看第一步：域名解析
 
-<a name="PqqQl"></a>
 ### 域名解析
 解析域名分为两种：
 
@@ -43,9 +42,11 @@ CDN全称叫做“Content Delivery Network”，中文叫**内容分发网络**�
 
 实际上DNS系统是非常庞大的，这里不去多将，大家把它当作一个黑盒子，这个盒子的作用就是上文所描述的，这里用一个简单的图来表示一下。
 
-没有CNAME的情况：<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/365147/1563261172481-e1cab16e-557b-4b4d-8e7c-ce1c9f17dbf4.png#align=left&display=inline&height=237&name=image.png&originHeight=474&originWidth=1004&size=41808&status=done&width=502)
+没有CNAME的情况：
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/365147/1563261172481-e1cab16e-557b-4b4d-8e7c-ce1c9f17dbf4.png#align=left&display=inline&height=237&name=image.png&originHeight=474&originWidth=1004&size=41808&status=done&width=502)
 
-有CNAME的情况：<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/365147/1563261182855-c2ebf535-95ca-4449-a349-d6a3219b1269.png#align=left&display=inline&height=234&name=image.png&originHeight=468&originWidth=1012&size=46488&status=done&width=506)
+有CNAME的情况：
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/365147/1563261182855-c2ebf535-95ca-4449-a349-d6a3219b1269.png#align=left&display=inline&height=234&name=image.png&originHeight=468&originWidth=1012&size=46488&status=done&width=506)
 
 **特别注意：在有CNAME的情况下，我们可以发现，CNAME实际上在域名解析的过程中承担了中间人（或者说代理）的角色，这是CDN实现的关键。**
 
@@ -112,4 +113,7 @@ CDN全称叫做“Content Delivery Network”，中文叫**内容分发网络**�
 ## 总结
 通过上面的文章我们可以发现，CDN的实现原理依赖于DNS，因为本人不是专门搞网络的，所以文中如果有不准确的地方，还请各位大佬指出。
 
-**重点**<br />****有痛点才有创新，一个技术肯定都是为了解决某个痛点才出现的。**<br />请帮忙转发一下，如果想第一时间学习更多的精彩的内容，请关注微信公众号：**1点25**<br />![reny125.jpeg](https://cdn.nlark.com/yuque/0/2019/jpeg/365147/1563264678901-ce9bcd93-a95a-45e4-8075-74ff66d0e515.jpeg#align=left&display=inline&height=492&name=reny125.jpeg&originHeight=1164&originWidth=1005&size=194236&status=done&width=425)
+**重点**
+****有痛点才有创新，一个技术肯定都是为了解决某个痛点才出现的。**
+请帮忙转发一下，如果想第一时间学习更多的精彩的内容，请关注微信公众号：**1点25**
+![reny125.jpeg](https://cdn.nlark.com/yuque/0/2019/jpeg/365147/1563264678901-ce9bcd93-a95a-45e4-8075-74ff66d0e515.jpeg#align=left&display=inline&height=492&name=reny125.jpeg&originHeight=1164&originWidth=1005&size=194236&status=done&width=425)
