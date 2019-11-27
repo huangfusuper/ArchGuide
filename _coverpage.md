@@ -6,3 +6,8 @@
 
 [GitHub](<https://github.com/boomblog/ArchGuide>)
 [开始阅读](#分布式)
+
+
+![](./media/pictures/rostyslav-savchyn-5joK905gcGc-unsplash.jpg)
+
+
